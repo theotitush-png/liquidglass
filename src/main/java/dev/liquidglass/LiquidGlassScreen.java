@@ -1,5 +1,6 @@
 package dev.liquidglass;
 
+import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -91,8 +92,10 @@ public final class LiquidGlassScreen extends Screen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
+    public boolean mouseClicked(Click click, boolean doubled) {
+        double mouseX = click.x();
+        double mouseY = click.y();
+        if (click.button() == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
             int topW = Math.min(650, width - 32);
             int left = (width - topW) / 2;
             int tabW = topW / TABS.length;
@@ -108,7 +111,7 @@ public final class LiquidGlassScreen extends Screen {
                 }
             }
         }
-        return super.mouseClicked(mouseX, mouseY, button);
+        return super.mouseClicked(click, doubled);
     }
 
     private void rounded(DrawContext ctx, int x1, int y1, int x2, int y2, int fill, int edge) {
