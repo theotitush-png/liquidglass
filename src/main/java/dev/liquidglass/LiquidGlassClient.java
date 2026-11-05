@@ -22,6 +22,7 @@ public final class LiquidGlassClient implements ClientModInitializer {
                 KeyBinding.Category.MISC
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            AutoMace.tick(client, MODULES);
             while (openGui.wasPressed()) {
                 if (client.currentScreen instanceof LiquidGlassScreen) {
                     client.setScreen(null);
