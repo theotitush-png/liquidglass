@@ -9,6 +9,7 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 public final class LiquidGlassClient implements ClientModInitializer {
+    // AutoMace is implemented in its own source file.
     public static final ModuleManager MODULES = new ModuleManager();
     private static KeyBinding openGui;
 
