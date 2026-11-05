@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "liquidglass",
+  "version": "${version}",
+  "name": "LiquidGlass",
+  "description": "A pink liquid-glass client GUI with configurable visual and HUD modules.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.liquidglass.LiquidGlassClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
