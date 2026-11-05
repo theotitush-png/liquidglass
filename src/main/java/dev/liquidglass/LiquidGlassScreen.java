@@ -14,10 +14,9 @@ public final class LiquidGlassScreen extends Screen {
     private static final int PINK = 0xFFF078B8;
     private static final int PANEL = 0xB82A2637;
     private static final int PANEL_EDGE = 0x887F718B;
-    private static final String[] TABS = {"Modules", "HUD", "Friends", "Theme", "Config", "Donut"};
+    private static final String[] TABS = {"Modules", "HUD", "Friends", "Theme", "Config", "Donut", "Waypoints"};
     private static final String[] CATEGORIES = {"Combat", "Movement", "Render", "Misc", "Client"};
     private String activeTab = "Modules";
-    private String activeCategory = "Render";
     private TextFieldWidget search;
     private final List<HitBox> moduleHits = new ArrayList<>();
 
@@ -27,8 +26,7 @@ public final class LiquidGlassScreen extends Screen {
 
     @Override
     protected void init() {
-        int sw = width;
-        search = new TextFieldWidget(textRenderer, sw / 2 - 145, 57, 290, 22, Text.literal("Search modules..."));
+        search = new TextFieldWidget(textRenderer, width / 2 - 145, 57, 290, 22, Text.literal("Search modules..."));
         search.setPlaceholder(Text.literal("Search modules..."));
         addDrawableChild(search);
     }
@@ -44,7 +42,7 @@ public final class LiquidGlassScreen extends Screen {
         int tabW = topW / TABS.length;
         for (int i = 0; i < TABS.length; i++) {
             int x = left + i * tabW;
-            if (TABS[i].equals(activeTab)) rounded(ctx, x + 4, 13, x + tabW - 4, 43, PINK, PINK);
+            if (TABS[i].equals(activeTab)) rounded(ctx, x + 3, 13, x + tabW - 3, 43, PINK, PINK);
             centered(ctx, TABS[i], x + tabW / 2, 24, TABS[i].equals(activeTab) ? 0xFF241A29 : 0xFFE8E1EA);
         }
         rounded(ctx, width / 2 - 150, 56, width / 2 + 150, 82, 0xCC343140, PANEL_EDGE);
@@ -76,14 +74,14 @@ public final class LiquidGlassScreen extends Screen {
             for (Module module : list) {
                 if (!search.getText().isBlank()
                         && !module.name().toLowerCase().contains(search.getText().toLowerCase())) continue;
-                int rowH = 34;
+                int rowH = 27;
                 int color = module.enabled() ? PINK : 0x224D4658;
-                if (module.enabled()) rounded(ctx, x + 5, y, x + panelW - 5, y + 30, color, color);
-                ctx.drawText(textRenderer, module.name(), x + 13, y + 10,
+                if (module.enabled()) rounded(ctx, x + 5, y, x + panelW - 5, y + 24, color, color);
+                ctx.drawText(textRenderer, module.name(), x + 13, y + 7,
                         module.enabled() ? 0xFFFFFFFF : 0xFFE5DFE9, false);
                 String mark = module.enabled() ? "ON" : "+";
-                ctx.drawText(textRenderer, mark, x + panelW - 28, y + 10, 0xFFFFFFFF, false);
-                moduleHits.add(new HitBox(x + 5, y, x + panelW - 5, y + 30, module));
+                ctx.drawText(textRenderer, mark, x + panelW - 28, y + 7, 0xFFFFFFFF, false);
+                moduleHits.add(new HitBox(x + 5, y, x + panelW - 5, y + 24, module));
                 y += rowH;
             }
         }
@@ -115,7 +113,6 @@ public final class LiquidGlassScreen extends Screen {
     }
 
     private void rounded(DrawContext ctx, int x1, int y1, int x2, int y2, int fill, int edge) {
-        // Layered rectangles approximate the rounded glass panels without external rendering dependencies.
         ctx.fill(x1 + 4, y1, x2 - 4, y2, fill);
         ctx.fill(x1, y1 + 4, x2, y2 - 4, fill);
         ctx.fill(x1 + 2, y1 + 1, x2 - 2, y1 + 3, edge);
