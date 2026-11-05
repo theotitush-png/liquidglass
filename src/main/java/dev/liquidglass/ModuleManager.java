@@ -17,22 +17,73 @@ public final class ModuleManager {
     }
 
     public void registerDefaults() {
-        // Safe client-side visual, interface and convenience options.
-        add("Coordinates", "HUD", true);
-        add("FPS Counter", "HUD", true);
-        add("Clock", "HUD", false);
-        add("Armor Status", "HUD", false);
-        add("Crosshair Style", "Render", false);
-        add("Hit Color", "Render", false);
-        add("Fullbright", "Render", false);
+        // Combat
+        add("Aim Assist", "Combat", false);
+        add("Auto Anchor", "Combat", false);
+        add("Auto Crystal", "Combat", false);
+        add("Auto Mace", "Combat", false);
+        add("AutoCart", "Combat", false);
+        add("AutoTool", "Combat", false);
+        add("Backtrack", "Combat", false);
+        add("Hitboxes", "Combat", false);
+        add("Mace Swap", "Combat", false);
+        add("ShieldBreaker", "Combat", false);
+        add("Spear Lunge", "Combat", false);
+        add("Spear Reach", "Combat", false);
+        add("Totem Hit", "Combat", false);
+        add("Trigger Bot", "Combat", false);
+
+        // Movement
+        add("Auto Walk", "Movement", false);
+        add("Combo Helper", "Movement", false);
+        add("Fast Stairs", "Movement", false);
+        add("Freecam", "Movement", false);
+        add("GUI Walk", "Movement", false);
+        add("Jump Reset", "Movement", false);
+        add("Keep Sprint", "Movement", false);
+        add("Move Fix", "Movement", false);
+        add("No Jump Delay", "Movement", false);
+        add("No Lunge Cooldown", "Movement", false);
+        add("No Slow", "Movement", false);
+        add("No Web", "Movement", false);
+        add("NoFall", "Movement", false);
+        add("Null Move", "Movement", false);
+        add("Speed", "Movement", false);
+        add("Sprint", "Movement", false);
+        add("Step", "Movement", false);
+        add("Timer", "Movement", false);
+        add("Velocity", "Movement", false);
+
+        // Render
+        add("Aim Visualizer", "Render", false);
+        add("Crosshair", "Render", false);
+        add("FullBright", "Render", false);
+        add("Glass Panel", "Render", false);
+        add("Hit Markers", "Render", false);
+        add("HUD", "Render", false);
+        add("Jump Circles", "Render", false);
+        add("Nametags", "Render", false);
+        add("NoHurtCam", "Render", false);
+        add("NoRender", "Render", false);
+        add("Notifications", "Render", false);
+        add("Player ESP", "Render", false);
+        add("Storage ESP", "Render", false);
+        add("Swing Speed", "Render", false);
+        add("Target HUD", "Render", false);
+        add("Trails", "Render", false);
+        add("Trajectories", "Render", false);
+        add("Waypoints", "Render", false);
         add("Zoom", "Render", false);
-        add("Keystrokes", "HUD", false);
-        add("Potion Timers", "HUD", false);
+
+        // Miscellaneous
+        add("Auto Reconnect", "Misc", false);
+        add("InvPreview", "Misc", false);
+        add("Targets", "Misc", false);
+        add("Teams", "Misc", false);
+
+        // Client / interface
         add("Liquid Glass", "Client", true);
         add("UI Sounds", "Client", false);
-        add("Compact Chat", "Client", false);
-        add("Screenshot Toast", "Client", true);
-        add("Weather Particles", "Render", false);
-        add("Menu Panorama", "Client", true);
+        add("Toggle Sounds", "Client", false);
     }
 }
